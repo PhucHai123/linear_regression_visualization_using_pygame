@@ -75,7 +75,6 @@ class Draw_button(Init):
 	def font_note(self):
 		pygame.draw.rect(self.screen , self.GREY,(self.x_init + 1250 ,self.y_init - 120, self.Length + 80, self.width + 70))
 
-
 class Name_font(Init):
 	def __init__(self,screen,color,x_init,y_init,list_font):
 		super().__init__(screen,color,x_init,y_init)
@@ -83,8 +82,20 @@ class Name_font(Init):
 
 	def show_name_button(self):
 		fonts = self.list_font
- 		#                           1                                      2                                        3                                         4                                     5                                6                                       7                                        8                                 9                                 10                                            11                               12                                                
-		list_value = [[self.x_init - 5, self.y_init - 668], [self.x_init + 1450, self.y_init - 11], [self.x_init + 130, self.y_init + 50], [self.x_init - 10, self.y_init - 5], [self.x_init + 1450, self.y_init], [self.x_init - 15, self.y_init - 660], [self.x_init + 720 ,self.y_init + 50], [self.x_init + 1255 ,self.y_init - 120],[self.x_init + 15, self.y_init + 50],[self.x_init + 450 ,self.y_init + 50],[self.x_init + 1255,self.y_init - 95],[self.x_init + 575 ,self.y_init + 50]]
+		list_value = (
+		(self.x_init - 5, self.y_init - 668), 
+		(self.x_init + 1450, self.y_init - 11), 
+		(self.x_init + 130, self.y_init + 50), 
+		(self.x_init - 10, self.y_init - 5), 
+		(self.x_init + 1450, self.y_init), 
+		(self.x_init - 15, self.y_init - 660), 
+		(self.x_init + 720 ,self.y_init + 50), 
+		(self.x_init + 1255 ,self.y_init - 12),
+		(self.x_init + 15, self.y_init + 50),
+		(self.x_init + 450 ,self.y_init + 50),
+		(self.x_init + 1255,self.y_init - 95),
+		(self.x_init + 575 ,self.y_init + 50))
+
 		value = [i for i in range(12)]
 		for i in range(len(fonts)):
 			for index in range(len(value)):
@@ -181,8 +192,6 @@ def Draw_interface(screen,running,clock,COLORS,x_init,y_init,x_max,length,width)
 	font_recipe_note = font.render("Predict recipe",True,COLORS.BLUE)
 	font_library_note = font.render("Predict library",True,COLORS.BLACK)
 
-	
-
 	list_fonts = [[ox,oy,CLEAR_BUTTON_1,init_value,name_ox,name_oy,reset_button,font_note,font_recipe,font_library,font_data_point,CLEAR_BUTTON_2]]
 	points = []
 	value_X = []
@@ -197,7 +206,7 @@ def Draw_interface(screen,running,clock,COLORS,x_init,y_init,x_max,length,width)
 	error_2 = []
 
 	while running:
-		clock.tick(60)
+		clock.tick(120)
 		screen.fill(COLORS.BACKGROUP)
 		x_mouse,y_mouse = pygame.mouse.get_pos()
 
@@ -222,15 +231,12 @@ def Draw_interface(screen,running,clock,COLORS,x_init,y_init,x_max,length,width)
 		draw_button.Show_when_error()
 		draw_button.font_note()
 
-		#1305,600
 		#Note
 		pygame.draw.circle(screen,COLORS.RED,(1440,620),7)
 		screen.blit(font_recipe_note,(1305,630))
 		pygame.draw.line(screen,COLORS.BLUE,(1410,643),(1475,643),4)
 		screen.blit(font_library_note,(1305,655))
 		pygame.draw.line(screen,COLORS.BLACK,(1410,666),(1475,666),4)
-
-
 
 		#Tên các nút trong chương trình
 		name_font = Name_font(screen,COLORS,x_init,y_init,list_fonts)
@@ -359,7 +365,6 @@ def Draw_interface(screen,running,clock,COLORS,x_init,y_init,x_max,length,width)
 		for i in range(len(error_2)):	
 			if error_2[i] == error_note:
 				pygame.draw.rect(screen,COLORS.GREY,(x_init + 805,y_init + 45,length + 395,width))
-
 
 		pygame.display.flip()
 	pygame.quit()
