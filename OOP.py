@@ -90,12 +90,12 @@ class Name_font(Init):
 		(self.x_init + 1450, self.y_init), 
 		(self.x_init - 15, self.y_init - 660), 
 		(self.x_init + 720 ,self.y_init + 50), 
-		(self.x_init + 1255 ,self.y_init - 12),
+		(self.x_init + 1255 ,self.y_init - 120),
 		(self.x_init + 15, self.y_init + 50),
 		(self.x_init + 450 ,self.y_init + 50),
 		(self.x_init + 1255,self.y_init - 95),
 		(self.x_init + 575 ,self.y_init + 50))
-
+		
 		value = [i for i in range(12)]
 		for i in range(len(fonts)):
 			for index in range(len(value)):
@@ -193,6 +193,7 @@ def Draw_interface(screen,running,clock,COLORS,x_init,y_init,x_max,length,width)
 	font_library_note = font.render("Predict library",True,COLORS.BLACK)
 
 	list_fonts = [[ox,oy,CLEAR_BUTTON_1,init_value,name_ox,name_oy,reset_button,font_note,font_recipe,font_library,font_data_point,CLEAR_BUTTON_2]]
+	
 	points = []
 	value_X = []
 	value_Y = []
